@@ -5,4 +5,4 @@ def func(x, y):
         return 1 + func(x, y - 1)
 
 
-print(func(2, 4))
+print(func(10, 15))
