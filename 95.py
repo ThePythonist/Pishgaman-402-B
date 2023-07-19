@@ -1,16 +1,28 @@
 def register():
-    username = input("Username : ").casefold()
+    username = input("Username : ").lower()
     password = input("Password : ")
 
-    open("users.txt", "a").write(username+"\n")
-    open("passwords.txt", "a").write(password+"\n")
+    open("users.txt", "a").write(username + "\n")
+    open("passwords.txt", "a").write(password + "\n")
 
     print(f"Signed up user {username}")
 
 
 def signin():
-    pass
-    acconts = {"javad":"123"}
+    users = [i[:-1] for i in open("users.txt").readlines()]
+    passwords = [i[:-1] for i in open("passwords.txt").readlines()]
+    accounts = dict(zip(users, passwords))
+
+    username = input("Username : ").lower()
+    password = input("Password : ")
+
+    if username in accounts:
+        if password == accounts[username]:
+            print("Successfully logged in")
+        else:
+            print("Password is incorrect")
+    else:
+        print("Account not found")
 
 
 def main():
